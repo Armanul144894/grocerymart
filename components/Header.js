@@ -55,7 +55,7 @@ export default function Header() {
           >
             <div className="p-4 sm:p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold">Cart ({cartItemCount})</h2>
+                <h2 className="text-xl text-red-700 sm:text-2xl font-bold">Cart ({cartItemCount})</h2>
                 <button onClick={() => setShowCart(false)} className="p-2 hover:bg-gray-100 rounded-full">
                   <X size={24} />
                 </button>
@@ -74,7 +74,7 @@ export default function Header() {
                         <img src={item.image} alt={item.name} className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded" />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-sm mb-1 truncate">{item.name}</h3>
-                          <p className="text-blue-600 font-bold mb-2">৳{item.price}</p>
+                          <p className="text-red-600 font-bold mb-2">৳{item.price}</p>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2 bg-white rounded-lg border">
                               <button
@@ -118,7 +118,7 @@ export default function Header() {
                     </div>
                   </div>
 
-                  <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
                     Proceed to Checkout
                   </button>
                 </>
@@ -147,7 +147,7 @@ export default function Header() {
                 <Link href={'/'} className="block px-4 py-3 hover:bg-gray-100 rounded-lg text-gray-700 font-medium">
                       Home
                     </Link>
-                {['Shop', 'Offers', 'Blog', 'About Us', 'Contact'].map((item) => (
+                {['Shop', 'Offers', 'Brands', 'About Us', 'Contact'].map((item) => (
                   <Link
                     key={item}
                     href={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -207,9 +207,11 @@ export default function Header() {
             </button>
 
             {/* Logo */}
+            <Link href={'/'}>
             <div className="text-lg sm:text-2xl font-bold text-red-600 cursor-pointer">
               🛒 <span className="hidden sm:inline">GROCERY</span><span className="text-green-600">MART</span>
             </div>
+            </Link>
 
             {/* Search Bar - Hidden on mobile, shown on tablet+ */}
             <div className="hidden md:flex flex-1 max-w-2xl">
@@ -322,7 +324,7 @@ export default function Header() {
                     <Link href={'/'} className="hover:text-red-600 transition">
                       Home
                     </Link>
-                  {['Shop', 'Offers', 'Blog', 'About Us', 'Contact'].map((item) => (
+                  {['Shop', 'Offers', 'Brands', 'About Us', 'Contact'].map((item) => (
                     <Link key={item} href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-red-600 transition">
                       {item}
                     </Link>

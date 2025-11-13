@@ -7,6 +7,7 @@ import Banner from '@/app/HomeComponents/Banner';
 import FeaturedBanner from '@/app/HomeComponents/FeaturedBanner';
 import DayDeal from './HomeComponents/DayDeal';
 import Link from 'next/link';
+import WeeklyOffer from './HomeComponents/WeeklyOffer';
 
 // Mock data with real image URLs
 const categories = [
@@ -387,56 +388,7 @@ export default function GroceryStore() {
         </div>
       </section>
 
-      {/* Weekly Offers */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <Clock size={32} className="text-orange-500" />
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Weekly Special Offers</h2>
-                <p className="text-gray-600 mt-1">Limited time deals you  miss</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
-            {products.slice(0, 4).map((product) => (
-              <div
-                key={product.id}
-                className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200 hover:border-red-400 transition hover:shadow-xl"
-              >
-                <div className="bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4 w-fit flex items-center gap-1">
-                  <Zap size={14} />
-                  SPECIAL OFFER
-                </div>
-                <div className="aspect-square mb-4 overflow-hidden rounded-lg bg-white">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="font-bold text-lg mb-2 text-gray-900">{product.name}</h3>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-red-600">৳{product.price}</span>
-                    <span className="text-sm text-gray-400 line-through ml-2">৳{product.oldPrice}</span>
-                  </div>
-                  <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-                    -{product.discount}%
-                  </div>
-                </div>
-                <button
-                  onClick={() => addToCart(product)}
-                  className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WeeklyOffer/>
 
       {/* Customer Testimonials */}
       <section className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">

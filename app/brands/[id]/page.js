@@ -10,345 +10,253 @@ import {
   Phone,
   Mail,
   MapPin,
+  ChevronRight,
+  Star,
   Filter,
   Grid,
   List,
-  Star,
+  Package,
+  Award,
+  TrendingUp,
   X,
   SlidersHorizontal,
 } from "lucide-react";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-// Mock products data
-const allProducts = [
+// Mock brand data
+const brandData = {
+  id: 1,
+  name: "ACI Limited",
+  logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=300&h=300&fit=crop",
+  banner:
+    "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&h=500&fit=crop",
+  description:
+    "ACI Limited is one of the leading conglomerates in Bangladesh with a multinational heritage. Since its establishment in 1968, ACI has been a pioneer in offering quality products.",
+  founded: "1968",
+  totalProducts: 245,
+  categories: 8,
+  rating: 4.8,
+  reviews: 1250,
+};
+
+// Mock products
+const brandProducts = [
   {
     id: 1,
-    name: "Fresh Tomatoes",
-    price: 45,
-    oldPrice: 60,
-    discount: 25,
+    name: "ACI Pure Salt 1kg",
+    price: 25,
+    oldPrice: 30,
+    discount: 17,
     image:
-      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&h=600&fit=crop",
-    category: "Vegetables",
-    rating: 4.5,
-    stock: 50,
-    brand: "FreshFarm",
+      "https://images.unsplash.com/photo-1607541220892-f4b97c0f85a8?w=300&h=300&fit=crop",
+    category: "Spices",
+    rating: 4.7,
+    stock: 150,
   },
   {
     id: 2,
-    name: "Basmati Rice 5kg",
+    name: "ACI Nutrilife Milk Powder",
     price: 450,
     oldPrice: 500,
     discount: 10,
     image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop",
-    category: "Grains",
+      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=300&fit=crop",
+    category: "Dairy",
     rating: 4.8,
-    stock: 30,
-    brand: "Premium",
+    stock: 80,
   },
   {
     id: 3,
-    name: "Fresh Milk 1L",
+    name: "ACI Vermicelli",
     price: 65,
     oldPrice: 75,
     discount: 13,
     image:
-      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=300&fit=crop",
-    category: "Dairy",
-    rating: 4.7,
-    stock: 100,
-    brand: "DairyFresh",
+      "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=300&fit=crop",
+    category: "Noodles",
+    rating: 4.6,
+    stock: 120,
   },
   {
     id: 4,
-    name: "Brown Bread",
-    price: 35,
-    oldPrice: 40,
-    discount: 12,
+    name: "ACI Sauce Tomato Ketchup",
+    price: 85,
+    oldPrice: 95,
+    discount: 11,
     image:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=300&fit=crop",
-    category: "Bakery",
-    rating: 4.6,
-    stock: 45,
-    brand: "BakeHouse",
+      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=300&h=300&fit=crop",
+    category: "Sauces",
+    rating: 4.5,
+    stock: 95,
   },
   {
     id: 5,
-    name: "Farm Eggs (12pcs)",
+    name: "ACI Fun Cake",
     price: 120,
     oldPrice: 140,
     discount: 14,
     image:
-      "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&h=300&fit=crop",
-    category: "Dairy",
-    rating: 4.9,
+      "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=300&h=300&fit=crop",
+    category: "Snacks",
+    rating: 4.7,
     stock: 60,
-    brand: "FarmFresh",
   },
   {
     id: 6,
-    name: "Cooking Oil 1L",
+    name: "ACI Savlon Handwash",
+    price: 95,
+    oldPrice: 110,
+    discount: 14,
+    image:
+      "https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?w=300&h=300&fit=crop",
+    category: "Personal Care",
+    rating: 4.9,
+    stock: 200,
+  },
+  {
+    id: 7,
+    name: "ACI Pure Mustard Oil",
     price: 180,
     oldPrice: 200,
     discount: 10,
     image:
       "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&h=300&fit=crop",
-    category: "Cooking",
-    rating: 4.5,
-    stock: 80,
-    brand: "PureOil",
-  },
-  {
-    id: 7,
-    name: "Fresh Potatoes",
-    price: 30,
-    oldPrice: 40,
-    discount: 25,
-    image:
-      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&h=300&fit=crop",
-    category: "Vegetables",
-    rating: 4.4,
-    stock: 150,
-    brand: "FreshFarm",
+    category: "Oils",
+    rating: 4.8,
+    stock: 75,
   },
   {
     id: 8,
-    name: "Green Tea Bags",
-    price: 95,
-    oldPrice: 110,
-    discount: 14,
+    name: "ACI Aerosol Mosquito Spray",
+    price: 140,
+    oldPrice: 160,
+    discount: 13,
     image:
-      "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=300&h=300&fit=crop",
-    category: "Beverages",
-    rating: 4.7,
-    stock: 40,
-    brand: "TeaTime",
+      "https://images.unsplash.com/photo-1608889476518-738c9b1dcb8e?w=300&h=300&fit=crop",
+    category: "Home Care",
+    rating: 4.6,
+    stock: 85,
   },
   {
     id: 9,
-    name: "Chicken Breast 1kg",
-    price: 280,
-    oldPrice: 320,
-    discount: 12,
+    name: "ACI Pure Turmeric Powder",
+    price: 45,
+    oldPrice: 55,
+    discount: 18,
     image:
-      "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=300&h=300&fit=crop",
-    category: "Meat",
-    rating: 4.8,
-    stock: 25,
-    brand: "MeatMart",
+      "https://images.unsplash.com/photo-1596040033229-a0b3b29d1c27?w=300&h=300&fit=crop",
+    category: "Spices",
+    rating: 4.7,
+    stock: 140,
   },
   {
     id: 10,
-    name: "Fresh Bananas",
-    price: 60,
-    oldPrice: 70,
-    discount: 14,
-    image:
-      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&h=300&fit=crop",
-    category: "Fruits",
-    rating: 4.6,
-    stock: 90,
-    brand: "FruitCo",
-  },
-  {
-    id: 11,
-    name: "Yogurt 500g",
-    price: 75,
-    oldPrice: 85,
-    discount: 12,
-    image:
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=300&fit=crop",
-    category: "Dairy",
-    rating: 4.7,
-    stock: 70,
-    brand: "DairyFresh",
-  },
-  {
-    id: 12,
-    name: "Biscuits Pack",
-    price: 55,
-    oldPrice: 65,
-    discount: 15,
-    image:
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&h=300&fit=crop",
-    category: "Snacks",
-    rating: 4.5,
-    stock: 120,
-    brand: "Snacky",
-  },
-  {
-    id: 13,
-    name: "Fresh Carrots",
+    name: "ACI Chili Powder",
     price: 40,
     oldPrice: 50,
     discount: 20,
     image:
-      "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300&h=300&fit=crop",
-    category: "Vegetables",
+      "https://images.unsplash.com/photo-1599909533540-d51eb5ab5698?w=300&h=300&fit=crop",
+    category: "Spices",
+    rating: 4.5,
+    stock: 110,
+  },
+  {
+    id: 11,
+    name: "ACI Pasta",
+    price: 75,
+    oldPrice: 85,
+    discount: 12,
+    image:
+      "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=300&fit=crop",
+    category: "Noodles",
     rating: 4.6,
-    stock: 80,
-    brand: "FreshFarm",
+    stock: 90,
+  },
+  {
+    id: 12,
+    name: "ACI Liquid Hand Soap",
+    price: 110,
+    oldPrice: 125,
+    discount: 12,
+    image:
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&h=300&fit=crop",
+    category: "Personal Care",
+    rating: 4.8,
+    stock: 130,
+  },
+  {
+    id: 13,
+    name: "ACI Pure Cumin Powder",
+    price: 55,
+    oldPrice: 65,
+    discount: 15,
+    image:
+      "https://images.unsplash.com/photo-1596547609652-70d671f675f4?w=300&h=300&fit=crop",
+    category: "Spices",
+    rating: 4.6,
+    stock: 100,
   },
   {
     id: 14,
-    name: "Orange Juice 1L",
-    price: 120,
-    oldPrice: 140,
+    name: "ACI Tomato Sauce",
+    price: 90,
+    oldPrice: 105,
     discount: 14,
     image:
-      "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=300&h=300&fit=crop",
-    category: "Beverages",
-    rating: 4.8,
-    stock: 55,
-    brand: "JuicePlus",
+      "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=300&h=300&fit=crop",
+    category: "Sauces",
+    rating: 4.7,
+    stock: 88,
   },
   {
     id: 15,
-    name: "Honey 500g",
-    price: 350,
-    oldPrice: 400,
-    discount: 12,
+    name: "ACI Dishwashing Liquid",
+    price: 125,
+    oldPrice: 145,
+    discount: 14,
     image:
-      "https://images.unsplash.com/photo-1587049352846-4a222e784354?w=300&h=300&fit=crop",
-    category: "Organic",
-    rating: 4.9,
-    stock: 35,
-    brand: "PureHoney",
+      "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=300&h=300&fit=crop",
+    category: "Home Care",
+    rating: 4.5,
+    stock: 105,
   },
   {
     id: 16,
-    name: "Fresh Apples",
-    price: 180,
-    oldPrice: 200,
-    discount: 10,
+    name: "ACI Noodles",
+    price: 35,
+    oldPrice: 40,
+    discount: 13,
     image:
-      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&h=300&fit=crop",
-    category: "Fruits",
-    rating: 4.7,
-    stock: 65,
-    brand: "FruitCo",
-  },
-  {
-    id: 17,
-    name: "Cheese Block",
-    price: 250,
-    oldPrice: 280,
-    discount: 11,
-    image:
-      "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=300&h=300&fit=crop",
-    category: "Dairy",
+      "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300&h=300&fit=crop",
+    category: "Noodles",
     rating: 4.6,
-    stock: 40,
-    brand: "DairyFresh",
-  },
-  {
-    id: 18,
-    name: "Fresh Strawberries",
-    price: 220,
-    oldPrice: 250,
-    discount: 12,
-    image:
-      "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=300&h=300&fit=crop",
-    category: "Fruits",
-    rating: 4.8,
-    stock: 30,
-    brand: "FruitCo",
-  },
-  {
-    id: 19,
-    name: "Pasta 500g",
-    price: 85,
-    oldPrice: 95,
-    discount: 11,
-    image:
-      "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=300&fit=crop",
-    category: "Grains",
-    rating: 4.5,
-    stock: 75,
-    brand: "PastaKing",
-  },
-  {
-    id: 20,
-    name: "Fresh Cucumber",
-    price: 25,
-    oldPrice: 35,
-    discount: 29,
-    image:
-      "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=300&h=300&fit=crop",
-    category: "Vegetables",
-    rating: 4.4,
-    stock: 100,
-    brand: "FreshFarm",
+    stock: 180,
   },
 ];
 
 const categories = [
   "All Products",
-  "Vegetables",
-  "Fruits",
+  "Spices",
   "Dairy",
-  "Bakery",
-  "Meat",
-  "Beverages",
+  "Noodles",
+  "Sauces",
   "Snacks",
-  "Grains",
-  "Cooking",
-  "Organic",
-];
-const brands = [
-  "All Brands",
-  "FreshFarm",
-  "DairyFresh",
-  "FruitCo",
-  "Premium",
-  "BakeHouse",
-  "MeatMart",
-  "TeaTime",
-  "Snacky",
-  "JuicePlus",
-  "PureHoney",
+  "Personal Care",
+  "Oils",
+  "Home Care",
 ];
 
-export default function Page() {
+export default function BrandShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Products");
-  const [selectedBrand, setSelectedBrand] = useState("All Brands");
-  const [priceRange, setPriceRange] = useState([0, 500]);
   const [sortBy, setSortBy] = useState("featured");
   const [viewMode, setViewMode] = useState("grid");
   const [showFilters, setShowFilters] = useState(false);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [showCart, setShowCart] = useState(false);
-
-  // Filter products
-  let filteredProducts = allProducts.filter((product) => {
-    const matchCategory =
-      selectedCategory === "All Products" ||
-      product.category === selectedCategory;
-    const matchBrand =
-      selectedBrand === "All Brands" || product.brand === selectedBrand;
-    const matchPrice =
-      product.price >= priceRange[0] && product.price <= priceRange[1];
-    const matchSearch = product.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    return matchCategory && matchBrand && matchPrice && matchSearch;
-  });
-
-  // Sort products
-  if (sortBy === "price-low") {
-    filteredProducts.sort((a, b) => a.price - b.price);
-  } else if (sortBy === "price-high") {
-    filteredProducts.sort((a, b) => b.price - a.price);
-  } else if (sortBy === "rating") {
-    filteredProducts.sort((a, b) => b.rating - a.rating);
-  } else if (sortBy === "discount") {
-    filteredProducts.sort((a, b) => b.discount - a.discount);
-  }
+  const [priceRange, setPriceRange] = useState([0, 500]);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -363,14 +271,31 @@ export default function Page() {
     }
   };
 
-  const cartTotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-  const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  // Filter products
+  let filteredProducts = brandProducts.filter((product) => {
+    const matchCategory =
+      selectedCategory === "All Products" ||
+      product.category === selectedCategory;
+    const matchPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+    return matchCategory && matchPrice;
+  });
+
+  // Sort products
+  if (sortBy === "price-low") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortBy === "price-high") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortBy === "rating") {
+    filteredProducts.sort((a, b) => b.rating - a.rating);
+  } else if (sortBy === "discount") {
+    filteredProducts.sort((a, b) => b.discount - a.discount);
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
+
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
@@ -378,17 +303,84 @@ export default function Page() {
             <Link href="/" className="hover:text-red-600">
               Home
             </Link>
-            <span>/</span>
-            <span className="text-gray-900 font-semibold">Shop</span>
+            <ChevronRight size={16} />
+            <Link href="/brands" className="hover:text-red-600">
+              Brands
+            </Link>
+            <ChevronRight size={16} />
+            <span className="text-gray-900 font-semibold">
+              {brandData.name}
+            </span>
           </div>
         </div>
       </div>
 
+      {/* Brand Banner */}
+      <section className="relative h-[80vh] md:h-80 overflow-hidden">
+        <img
+          src={brandData.banner}
+          alt={brandData.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
+
+        <div className="absolute inset-0 container mx-auto px-4 flex items-center">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-8">
+            <div className="w-32 h-32 bg-white rounded-2xl overflow-hidden shadow-2xl flex-shrink-0">
+              <img
+                src={brandData.logo}
+                alt={brandData.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="text-white">
+              <h1 className="text-5xl font-bold mb-3">{brandData.name}</h1>
+              <p className="text-lg mb-4 max-w-2xl">{brandData.description}</p>
+
+              <div className="flex items-center gap-8">
+                <div>
+                  <div className="text-2xl font-bold">
+                    {brandData.totalProducts}
+                  </div>
+                  <div className="text-sm text-gray-300">Products</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold">
+                    {brandData.categories}
+                  </div>
+                  <div className="text-sm text-gray-300">Categories</div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1 text-2xl font-bold">
+                    <Star
+                      size={24}
+                      className="fill-yellow-400 text-yellow-400"
+                    />
+                    {brandData.rating}
+                  </div>
+                  <div className="text-sm text-gray-300">
+                    {brandData.reviews} Reviews
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold">
+                    Since {brandData.founded}
+                  </div>
+                  <div className="text-sm text-gray-300">Established</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-wrap md:flex-nowrap gap-6">
           {/* Sidebar Filters */}
           {showFilters && (
-            <div className="w-full md:w-64 flex-shrink-0">
+            <div className="md:w-64 w-full flex-shrink-0">
               <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="font-bold text-lg flex items-center gap-2">
@@ -448,33 +440,10 @@ export default function Page() {
                   </div>
                 </div>
 
-                {/* Brands */}
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-gray-900">Brands</h4>
-                  <div className="space-y-2 max-h-48 overflow-y-auto">
-                    {brands.map((brand) => (
-                      <label
-                        key={brand}
-                        className="flex items-center gap-2 cursor-pointer hover:text-red-600"
-                      >
-                        <input
-                          type="radio"
-                          name="brand"
-                          checked={selectedBrand === brand}
-                          onChange={() => setSelectedBrand(brand)}
-                          className="text-red-600 focus:ring-red-500"
-                        />
-                        <span className="text-sm">{brand}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Reset Filters */}
                 <button
                   onClick={() => {
                     setSelectedCategory("All Products");
-                    setSelectedBrand("All Brands");
                     setPriceRange([0, 500]);
                   }}
                   className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition font-semibold text-sm"
@@ -489,7 +458,7 @@ export default function Page() {
           <div className="flex-1">
             {/* Toolbar */}
             <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-              <div className="flex items-center flex-wrap gap-4 justify-between">
+              <div className="flex items-center flex-wrap gap-6 justify-between">
                 <div className="flex items-center gap-4">
                   {!showFilters && (
                     <button
@@ -510,7 +479,6 @@ export default function Page() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  {/* Sort Dropdown */}
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
@@ -523,7 +491,6 @@ export default function Page() {
                     <option value="discount">Best Discount</option>
                   </select>
 
-                  {/* View Mode Toggle */}
                   <div className="flex gap-2">
                     <button
                       onClick={() => setViewMode("grid")}
@@ -550,15 +517,9 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Products Grid/List */}
-            {filteredProducts.length === 0 ? (
-              <div className="text-center py-16 bg-white rounded-lg shadow-md">
-                <p className="text-gray-500 text-lg">
-                  No products found matching your criteria
-                </p>
-              </div>
-            ) : viewMode === "grid" ? (
-              <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+            {/* Products Grid */}
+            {viewMode === "grid" ? (
+              <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
@@ -568,13 +529,10 @@ export default function Page() {
                       href={`/product/${product.name
                         .toLowerCase()
                         .replace(/\s+/g, "-")}`}
-                      passHref
                     >
                       {product.discount && (
-                        <div className="absolute top-2 left-2 z-10">
-                          <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
-                            -{product.discount}%
-                          </div>
+                        <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
+                          -{product.discount}%
                         </div>
                       )}
                       <button
@@ -620,12 +578,9 @@ export default function Page() {
                         </span>
                       </div>
 
-                      <h3 className="font-semibold text-sm mb-1 text-gray-900 line-clamp-2 h-10 cursor-pointer hover:text-red-600">
+                      <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10 cursor-pointer hover:text-red-600">
                         {product.name}
                       </h3>
-                      <p className="text-xs text-gray-500 mb-2">
-                        {product.brand}
-                      </p>
 
                       <div className="mb-3">
                         <div className="flex items-center gap-2">
@@ -638,7 +593,8 @@ export default function Page() {
                             </span>
                           )}
                         </div>
-                        <div className="text-xs text-green-600 mt-1">
+                        <div className="text-xs text-green-600 mt-1 flex items-center gap-1">
+                          <Package size={12} />
                           In Stock: {product.stock}
                         </div>
                       </div>
@@ -662,10 +618,9 @@ export default function Page() {
                     href={`/product/${product.name
                       .toLowerCase()
                       .replace(/\s+/g, "-")}`}
-                    passHref
                   >
-                    <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap gap-6 mb-5">
-                      <div className=" w-full h-full md:w-48 md:h-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 relative">
+                    <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap mb-5 gap-6">
+                      <div className="w-full md:w-48 h-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 relative">
                         {product.discount && (
                           <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
                             -{product.discount}%
@@ -683,7 +638,7 @@ export default function Page() {
                           {product.name}
                         </h3>
                         <p className="text-sm text-gray-600 mb-3">
-                          Brand: {product.brand}
+                          Category: {product.category}
                         </p>
 
                         <div className="flex items-center gap-2 mb-3">
@@ -703,12 +658,7 @@ export default function Page() {
                           </span>
                         </div>
 
-                        <p className="text-gray-600 text-sm mb-4">
-                          High quality {product.category.toLowerCase()} product.
-                          Fresh and organic, delivered right to your doorstep.
-                        </p>
-
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap lg:flex-nowrap gap-5 items-center justify-between">
                           <div>
                             <div className="flex items-center gap-3 mb-2">
                               <span className="text-3xl font-bold text-red-600">
@@ -761,6 +711,8 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
       <Footer />
     </div>
   );
