@@ -1,3 +1,4 @@
+'use client'
 import { Gift } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 

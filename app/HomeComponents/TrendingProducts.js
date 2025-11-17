@@ -1,5 +1,6 @@
 'use client'
 import { ChevronRight, Heart, Package, ShoppingCart, Star, TrendingUp } from 'lucide-react'
+import Link from 'next/link';
 import React, { useState } from 'react'
 
 const products = [
@@ -26,22 +27,22 @@ const products = [
 ];
 
 
-export default function TrendingProducts({wishlist,showNotification}) {
+export default function TrendingProducts({ wishlist, showNotification }) {
     const [cart, setCart] = useState([]);
 
     const addToCart = (product) => {
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
-      setCart(cart.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      ));
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-    showNotification('Added to cart!');
-  };
+        const existingItem = cart.find(item => item.id === product.id);
+        if (existingItem) {
+            setCart(cart.map(item =>
+                item.id === product.id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            ));
+        } else {
+            setCart([...cart, { ...product, quantity: 1 }]);
+        }
+        showNotification('Added to cart!');
+    };
 
     return (
         <div>
@@ -66,55 +67,58 @@ export default function TrendingProducts({wishlist,showNotification}) {
                                 key={product.id}
                                 className="bg-white rounded-xl shadow-sm hover:shadow-2xl transition-all p-4 relative group"
                             >
-                                {product.discount && (
-                                    <div className="absolute top-2 left-2 z-10">
-                                        <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
-                                            -{product.discount}%
+                                <Link href={`/product//${product.name
+                                    .toLowerCase()
+                                    .replace(/\s+/g, "-")}`} key={product.id}>
+                                    {product.discount && (
+                                        <div className="absolute top-2 left-2 z-10">
+                                            <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
+                                                -{product.discount}%
+                                            </div>
+                                        </div>
+                                    )}
+                                    <button
+                                        onClick={() => toggleWishlist(product.id)}
+                                        className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
+                                            } hover:bg-red-600 hover:text-white transition shadow-md`}
+                                    >
+                                        <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
+                                    </button>
+
+                                    <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+
+                                    <div className="flex items-center gap-1 mb-2">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star
+                                                key={i}
+                                                size={12}
+                                                className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
+                                            />
+                                        ))}
+                                        <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
+                                    </div>
+
+                                    <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
+
+                                    <div className="mb-3">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-lg font-bold text-red-600">৳{product.price}</span>
+                                            {product.oldPrice && (
+                                                <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
+                                            )}
+                                        </div>
+                                        <div className="text-xs text-green-600 mt-1 flex items-center gap-1">
+                                            <Package size={12} />
+                                            In Stock: {product.stock} units
                                         </div>
                                     </div>
-                                )}
-                                <button
-                                    onClick={() => toggleWishlist(product.id)}
-                                    className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
-                                        } hover:bg-red-600 hover:text-white transition shadow-md`}
-                                >
-                                    <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
-                                </button>
-
-                                <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                    />
-                                </div>
-
-                                <div className="flex items-center gap-1 mb-2">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            size={12}
-                                            className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
-                                        />
-                                    ))}
-                                    <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
-                                </div>
-
-                                <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
-
-                                <div className="mb-3">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-lg font-bold text-red-600">৳{product.price}</span>
-                                        {product.oldPrice && (
-                                            <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
-                                        )}
-                                    </div>
-                                    <div className="text-xs text-green-600 mt-1 flex items-center gap-1">
-                                        <Package size={12} />
-                                        In Stock: {product.stock} units
-                                    </div>
-                                </div>
-
+                                </Link>
                                 <button
                                     onClick={() => addToCart(product)}
                                     className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold flex items-center justify-center gap-2"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function RelatedProductsSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,45 +95,50 @@ export default function RelatedProductsSlider() {
               onTouchEnd={handleTouchEnd}
             >
               {relatedProducts.map((product) => (
-                <div
-                  key={product.id}
+                <Link href={`/product//${product.name
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`} key={product.id}
                   className="flex-shrink-0 px-3"
-                  style={{ width: `${100 / itemsPerView}%` }}
-                >
-                  <div className="border rounded-xl p-4 hover:shadow-xl transition group h-full">
-                    {product.discount && (
-                      <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded mb-2 w-fit">
-                        -{product.discount}%
-                      </div>
-                    )}
-                    <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="flex items-center gap-1 mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={12}
-                          className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
-                        />
-                      ))}
-                    </div>
-                    <h4 className="font-semibold text-sm mb-2 line-clamp-2">{product.name}</h4>
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-lg font-bold text-red-600">৳{product.price}</span>
-                      {product.oldPrice && (
-                        <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
+                  style={{ width: `${100 / itemsPerView}%` }}>
+                  <div
+
+
+                  >
+                    <div className="border rounded-xl p-4 hover:shadow-xl transition group h-full">
+                      {product.discount && (
+                        <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded mb-2 w-fit">
+                          -{product.discount}%
+                        </div>
                       )}
+                      <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="flex items-center gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={12}
+                            className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
+                          />
+                        ))}
+                      </div>
+                      <h4 className="font-semibold text-sm mb-2 line-clamp-2">{product.name}</h4>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-lg font-bold text-red-600">৳{product.price}</span>
+                        {product.oldPrice && (
+                          <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
+                        )}
+                      </div>
+                      <button className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold">
+                        Add to Cart
+                      </button>
                     </div>
-                    <button className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold">
-                      Add to Cart
-                    </button>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -143,9 +149,8 @@ export default function RelatedProductsSlider() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  currentIndex === index ? 'w-8 bg-red-600' : 'w-2 bg-gray-300'
-                }`}
+                className={`h-2 rounded-full transition-all ${currentIndex === index ? 'w-8 bg-red-600' : 'w-2 bg-gray-300'
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}

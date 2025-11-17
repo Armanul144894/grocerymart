@@ -22,7 +22,7 @@ export default function Header() {
   const [showCart, setShowCart] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [cart, setCart] = useState([
-    { id: 1, name: 'Fresh Tomatoes', price: 45, quantity: 2, image: 'https://images.unsplash.com/photo-1546470427-e26264be0b0d?w=300&h=300&fit=crop' },
+    { id: 1, name: 'Fresh Tomatoes', price: 45, quantity: 2, image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&h=300&fit=crop' },
     { id: 2, name: 'Basmati Rice 5kg', price: 450, quantity: 1, image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop' },
   ]);
   const [wishlist, setWishlist] = useState([]);
@@ -118,9 +118,10 @@ export default function Header() {
                     </div>
                   </div>
 
-                  <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
-                    Proceed to Checkout
-                  </button>
+                  <Link href={'/checkout'}>
+                    <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                      Proceed to Checkout
+                    </button></Link>
                 </>
               )}
             </div>
@@ -145,9 +146,9 @@ export default function Header() {
 
               <nav className="space-y-2">
                 <Link href={'/'} className="block px-4 py-3 hover:bg-gray-100 rounded-lg text-gray-700 font-medium">
-                      Home
-                    </Link>
-                {['Shop', 'Offers', 'Brands', 'About Us', 'Contact'].map((item) => (
+                  Home
+                </Link>
+                {['Shop', 'Offers', 'Brands'].map((item) => (
                   <Link
                     key={item}
                     href={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -208,9 +209,9 @@ export default function Header() {
 
             {/* Logo */}
             <Link href={'/'}>
-            <div className="text-lg sm:text-2xl font-bold text-red-600 cursor-pointer">
-              🛒 <span className="hidden sm:inline">GROCERY</span><span className="text-green-600">MART</span>
-            </div>
+              <div className="text-lg sm:text-2xl font-bold text-red-600 cursor-pointer">
+                🛒 <span className="hidden sm:inline">GROCERY</span><span className="text-green-600">MART</span>
+              </div>
             </Link>
 
             {/* Search Bar - Hidden on mobile, shown on tablet+ */}
@@ -321,10 +322,10 @@ export default function Header() {
                 </div>
 
                 <div className="flex gap-6 text-sm font-medium">
-                    <Link href={'/'} className="hover:text-red-600 transition">
-                      Home
-                    </Link>
-                  {['Shop', 'Offers', 'Brands', 'About Us', 'Contact'].map((item) => (
+                  <Link href={'/'} className="hover:text-red-600 transition">
+                    Home
+                  </Link>
+                  {['Shop', 'Offers', 'Brands'].map((item) => (
                     <Link key={item} href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-red-600 transition">
                       {item}
                     </Link>

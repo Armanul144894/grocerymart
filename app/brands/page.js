@@ -73,12 +73,12 @@ const featuredBrands = [
   {
     id: 5,
     name: "Radhuni",
-    logo: "https://images.unsplash.com/photo-1596040033229-a0b3b29d1c27?w=200&h=200&fit=crop",
+    logo: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=200&h=200&fit=crop",
     products: 95,
     category: "Spices & Seasoning",
     rating: 4.6,
     banner:
-      "https://images.unsplash.com/photo-1599909533540-d51eb5ab5698?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1551326844-4df70f78d0e9?w=1200&h=400&fit=crop",
     color: "from-orange-500 to-orange-600",
     description: "Authentic spices and masalas",
   },

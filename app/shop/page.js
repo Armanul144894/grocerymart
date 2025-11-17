@@ -419,7 +419,7 @@ export default function Page() {
                           name="category"
                           checked={selectedCategory === category}
                           onChange={() => setSelectedCategory(category)}
-                          className="text-red-600 focus:ring-red-500"
+                          className="w-4 h-4 accent-red-600 cursor-pointer"
                         />
                         <span className="text-sm">{category}</span>
                       </label>
@@ -440,7 +440,7 @@ export default function Page() {
                     onChange={(e) =>
                       setPriceRange([0, parseInt(e.target.value)])
                     }
-                    className="w-full"
+                    className="w-full accent-red-600 cursor-pointer"
                   />
                   <div className="flex justify-between text-sm text-gray-600 mt-2">
                     <span>৳{priceRange[0]}</span>
@@ -462,7 +462,7 @@ export default function Page() {
                           name="brand"
                           checked={selectedBrand === brand}
                           onChange={() => setSelectedBrand(brand)}
-                          className="text-red-600 focus:ring-red-500"
+                          className="accent-red-600 cursor-pointer"
                         />
                         <span className="text-sm">{brand}</span>
                       </label>
@@ -477,7 +477,7 @@ export default function Page() {
                     setSelectedBrand("All Brands");
                     setPriceRange([0, 500]);
                   }}
-                  className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition font-semibold text-sm"
+                  className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold text-sm"
                 >
                   Reset Filters
                 </button>
@@ -527,21 +527,19 @@ export default function Page() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => setViewMode("grid")}
-                      className={`p-2 rounded ${
-                        viewMode === "grid"
-                          ? "bg-red-600 text-white"
-                          : "bg-gray-200 text-gray-600"
-                      }`}
+                      className={`p-2 rounded ${viewMode === "grid"
+                        ? "bg-red-600 text-white"
+                        : "bg-gray-200 text-gray-600"
+                        }`}
                     >
                       <Grid size={18} />
                     </button>
                     <button
                       onClick={() => setViewMode("list")}
-                      className={`p-2 rounded ${
-                        viewMode === "list"
-                          ? "bg-red-600 text-white"
-                          : "bg-gray-200 text-gray-600"
-                      }`}
+                      className={`p-2 rounded ${viewMode === "list"
+                        ? "bg-red-600 text-white"
+                        : "bg-gray-200 text-gray-600"
+                        }`}
                     >
                       <List size={18} />
                     </button>
@@ -579,11 +577,10 @@ export default function Page() {
                       )}
                       <button
                         onClick={() => toggleWishlist(product.id)}
-                        className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${
-                          wishlist.includes(product.id)
-                            ? "bg-red-600 text-white"
-                            : "bg-white text-gray-400"
-                        } hover:bg-red-600 hover:text-white transition shadow-md`}
+                        className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id)
+                          ? "bg-red-600 text-white"
+                          : "bg-white text-gray-400"
+                          } hover:bg-red-600 hover:text-white transition shadow-md`}
                       >
                         <Heart
                           size={16}
@@ -643,28 +640,30 @@ export default function Page() {
                         </div>
                       </div>
 
-                      <button
-                        onClick={() => addToCart(product)}
-                        className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold flex items-center justify-center gap-2"
-                      >
-                        <ShoppingCart size={16} />
-                        Add to Cart
-                      </button>
+
                     </Link>
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold flex items-center justify-center gap-2"
+                    >
+                      <ShoppingCart size={16} />
+                      Add to Cart
+                    </button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="space-y-4">
                 {filteredProducts.map((product) => (
-                  <Link
-                    key={product.id}
-                    href={`/product/${product.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                    passHref
-                  >
-                    <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap gap-6 mb-5">
+
+                  <div key={product.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap gap-6 mb-5">
+                    <Link
+                      key={product.id}
+                      href={`/product/${product.name
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                      passHref
+                    >
                       <div className=" w-full h-full md:w-48 md:h-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 relative">
                         {product.discount && (
                           <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
@@ -677,84 +676,91 @@ export default function Page() {
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
                         />
                       </div>
+                    </Link>
 
-                      <div className="flex-1">
+                    <div className="flex-1">
+                      <Link
+                        key={product.id}
+                        href={`/product/${product.name
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
+                        passHref
+                      >
                         <h3 className="font-bold text-xl mb-2 text-gray-900 cursor-pointer hover:text-red-600">
                           {product.name}
                         </h3>
                         <p className="text-sm text-gray-600 mb-3">
                           Brand: {product.brand}
                         </p>
+                      </Link>
 
-                        <div className="flex items-center gap-2 mb-3">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              size={16}
-                              className={
-                                i < Math.floor(product.rating)
-                                  ? "fill-yellow-400 text-yellow-400"
-                                  : "text-gray-300"
-                              }
-                            />
-                          ))}
-                          <span className="text-sm text-gray-600">
-                            ({product.rating})
-                          </span>
+                      <div className="flex items-center gap-2 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={16}
+                            className={
+                              i < Math.floor(product.rating)
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
+                            }
+                          />
+                        ))}
+                        <span className="text-sm text-gray-600">
+                          ({product.rating})
+                        </span>
+                      </div>
+
+                      <p className="text-gray-600 text-sm mb-4">
+                        High quality {product.category.toLowerCase()} product.
+                        Fresh and organic, delivered right to your doorstep.
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-3xl font-bold text-red-600">
+                              ৳{product.price}
+                            </span>
+                            {product.oldPrice && (
+                              <span className="text-lg text-gray-400 line-through">
+                                ৳{product.oldPrice}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-sm text-green-600">
+                            In Stock: {product.stock} units
+                          </div>
                         </div>
 
-                        <p className="text-gray-600 text-sm mb-4">
-                          High quality {product.category.toLowerCase()} product.
-                          Fresh and organic, delivered right to your doorstep.
-                        </p>
-
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <div className="flex items-center gap-3 mb-2">
-                              <span className="text-3xl font-bold text-red-600">
-                                ৳{product.price}
-                              </span>
-                              {product.oldPrice && (
-                                <span className="text-lg text-gray-400 line-through">
-                                  ৳{product.oldPrice}
-                                </span>
-                              )}
-                            </div>
-                            <div className="text-sm text-green-600">
-                              In Stock: {product.stock} units
-                            </div>
-                          </div>
-
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => toggleWishlist(product.id)}
-                              className={`p-3 rounded-lg ${
-                                wishlist.includes(product.id)
-                                  ? "bg-red-600 text-white"
-                                  : "bg-gray-200 text-gray-600"
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => toggleWishlist(product.id)}
+                            className={`p-3 rounded-lg ${wishlist.includes(product.id)
+                              ? "bg-red-600 text-white"
+                              : "bg-gray-200 text-gray-600"
                               } hover:bg-red-600 hover:text-white transition`}
-                            >
-                              <Heart
-                                size={20}
-                                fill={
-                                  wishlist.includes(product.id)
-                                    ? "currentColor"
-                                    : "none"
-                                }
-                              />
-                            </button>
-                            <button
-                              onClick={() => addToCart(product)}
-                              className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold flex items-center gap-2"
-                            >
-                              <ShoppingCart size={20} />
-                              Add to Cart
-                            </button>
-                          </div>
+                          >
+                            <Heart
+                              size={20}
+                              fill={
+                                wishlist.includes(product.id)
+                                  ? "currentColor"
+                                  : "none"
+                              }
+                            />
+                          </button>
+                          <button
+                            onClick={() => addToCart(product)}
+                            className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold flex items-center gap-2"
+                          >
+                            <ShoppingCart size={20} />
+                            Add to Cart
+                          </button>
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             )}

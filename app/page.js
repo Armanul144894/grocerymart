@@ -8,6 +8,11 @@ import FeaturedBanner from '@/app/HomeComponents/FeaturedBanner';
 import DayDeal from './HomeComponents/DayDeal';
 import Link from 'next/link';
 import WeeklyOffer from './HomeComponents/WeeklyOffer';
+import Newsletter from './HomeComponents/Newsletter';
+import Testimonials from './HomeComponents/Testimonials';
+import FreshVegetablesBanner from './HomeComponents/FreshVegetablesBanner';
+import PromotionalBanners from './HomeComponents/PromotionalBanners';
+import TrustedPartners from './HomeComponents/TrustedPartners';
 
 // Mock data with real image URLs
 const categories = [
@@ -151,7 +156,7 @@ export default function GroceryStore() {
                 <p className="text-gray-600 mt-1">Most popular items this week</p>
               </div>
             </div>
-            <Link href='shop'>
+            <Link href='/shop'>
               <button className="text-red-600 font-semibold hover:underline flex items-center gap-1">
                 View All <ChevronRight size={18} />
               </button>
@@ -163,55 +168,59 @@ export default function GroceryStore() {
                 key={product.id}
                 className="bg-white rounded-xl shadow-sm hover:shadow-2xl transition-all p-4 relative group"
               >
-                {product.discount && (
-                  <div className="absolute top-2 left-2 z-10">
-                    <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
-                      -{product.discount}%
+                <Link href={`/product//${product.name
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`} key={product.id}>
+                  {product.discount && (
+                    <div className="absolute top-2 left-2 z-10">
+                      <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
+                        -{product.discount}%
+                      </div>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => toggleWishlist(product.id)}
+                    className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
+                      } hover:bg-red-600 hover:text-white transition shadow-md`}
+                  >
+                    <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
+                  </button>
+
+                  <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={12}
+                        className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
+                      />
+                    ))}
+                    <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
+                  </div>
+
+                  <Link href={`product/${product.id}`}>
+                    <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
+                  </Link>
+                  <div className="mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-bold text-red-600">৳{product.price}</span>
+                      {product.oldPrice && (
+                        <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
+                      )}
+                    </div>
+                    <div className="text-xs text-green-600 mt-1 flex items-center gap-1">
+                      <Package size={12} />
+                      In Stock: {product.stock} units
                     </div>
                   </div>
-                )}
-                <button
-                  onClick={() => toggleWishlist(product.id)}
-                  className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
-                    } hover:bg-red-600 hover:text-white transition shadow-md`}
-                >
-                  <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
-                </button>
-
-                <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={12}
-                      className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
-                    />
-                  ))}
-                  <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
-                </div>
-
-                <Link href={`product/${product.id}`}>
-                  <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
                 </Link>
-                <div className="mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-red-600">৳{product.price}</span>
-                    {product.oldPrice && (
-                      <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
-                    )}
-                  </div>
-                  <div className="text-xs text-green-600 mt-1 flex items-center gap-1">
-                    <Package size={12} />
-                    In Stock: {product.stock} units
-                  </div>
-                </div>
 
                 <button
                   onClick={() => addToCart(product)}
@@ -227,26 +236,7 @@ export default function GroceryStore() {
       </section>
 
       {/* Fresh Vegetables Banner */}
-      <section className="py-16 relative overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1600&h=400&fit=crop"
-          alt="Fresh Vegetables"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-600/80"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl text-white">
-            <div className="bg-yellow-400 text-gray-900 inline-block px-4 py-2 rounded-full text-sm font-bold mb-4">
-              100% Organic
-            </div>
-            <h2 className="text-5xl font-bold mb-4">Fresh Vegetables</h2>
-            <p className="text-xl mb-6 text-gray-100">Farm fresh produce delivered to your doorstep daily. All vegetables are pesticide-free and handpicked.</p>
-            <button className="bg-white text-green-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg flex items-center gap-2">
-              Shop Vegetables <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
-      </section>
+      <FreshVegetablesBanner />
 
       {/* Best Sellers */}
       <section className="py-12 bg-white">
@@ -283,53 +273,54 @@ export default function GroceryStore() {
                 key={product.id}
                 className="bg-white rounded-xl shadow-sm hover:shadow-2xl transition-all p-4 relative group border border-gray-100"
               >
-                {product.discount && (
-                  <div className="absolute top-2 left-2 z-10">
-                    <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
-                      -{product.discount}%
+                <Link href={`/product//${product.name
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`} key={product.id}>
+                  {product.discount && (
+                    <div className="absolute top-2 left-2 z-10">
+                      <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
+                        -{product.discount}%
+                      </div>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => toggleWishlist(product.id)}
+                    className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
+                      } hover:bg-red-600 hover:text-white transition shadow-md`}
+                  >
+                    <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
+                  </button>
+
+                  <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={12}
+                        className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
+                      />
+                    ))}
+                    <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
+                  </div>
+
+                  <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
+
+                  <div className="mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-bold text-red-600">৳{product.price}</span>
+                      {product.oldPrice && (
+                        <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
+                      )}
                     </div>
                   </div>
-                )}
-                <button
-                  onClick={() => toggleWishlist(product.id)}
-                  className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id) ? 'bg-red-600 text-white' : 'bg-white text-gray-400'
-                    } hover:bg-red-600 hover:text-white transition shadow-md`}
-                >
-                  <Heart size={16} fill={wishlist.includes(product.id) ? 'currentColor' : 'none'} />
-                </button>
-
-                <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={12}
-                      className={i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
-                    />
-                  ))}
-                  <span className="text-xs text-gray-500 ml-1">({product.rating})</span>
-                </div>
-
-                <Link href={`product/${product.id}`}>
-                  <h3 className="font-semibold text-sm mb-2 text-gray-900 line-clamp-2 h-10">{product.name}</h3>
                 </Link>
-
-                <div className="mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-red-600">৳{product.price}</span>
-                    {product.oldPrice && (
-                      <span className="text-xs text-gray-400 line-through">৳{product.oldPrice}</span>
-                    )}
-                  </div>
-                </div>
-
                 <button
                   onClick={() => addToCart(product)}
                   className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-semibold flex items-center justify-center gap-2"
@@ -344,122 +335,18 @@ export default function GroceryStore() {
       </section>
 
       {/* Promotional Banners */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-            <div className="relative rounded-2xl overflow-hidden h-80 cursor-pointer group">
-              <img
-                src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=400&fit=crop"
-                alt="Organic Foods"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-600/60"></div>
-              <div className="absolute inset-0 flex flex-col justify-center px-12 text-white">
-                <div className="bg-yellow-400 text-gray-900 inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 w-fit">
-                  NEW ARRIVAL
-                </div>
-                <h3 className="text-4xl font-bold mb-3">Organic Foods</h3>
-                <p className="text-lg mb-4">100% Chemical Free Products</p>
-                <button className="bg-white text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition w-fit">
-                  Explore Now
-                </button>
-              </div>
-            </div>
+      <PromotionalBanners />
 
-            <div className="relative rounded-2xl overflow-hidden h-80 cursor-pointer group">
-              <img
-                src="https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=800&h=400&fit=crop"
-                alt="Dairy Products"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-600/60"></div>
-              <div className="absolute inset-0 flex flex-col justify-center px-12 text-white">
-                <div className="bg-red-500 text-white inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 w-fit">
-                  SAVE 30%
-                </div>
-                <h3 className="text-4xl font-bold mb-3">Dairy Products</h3>
-                <p className="text-lg mb-4">Fresh milk, cheese & more</p>
-                <button className="bg-white text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition w-fit">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <WeeklyOffer/>
+      <WeeklyOffer />
 
       {/* Customer Testimonials */}
-      <section className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-3">What Our Customers Say</h2>
-            <p className="text-gray-600 text-lg">Trusted by thousands of happy customers</p>
-          </div>
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-            {testimonials.map((testimonial, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition">
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-600 italic">{testimonial.comment}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-orange-600">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center flex-wrap lg:flex-nowrap gap-5 justify-between">
-            <div className="text-white max-w-xl">
-              <h2 className="text-4xl font-bold mb-3">Subscribe to Our Newsletter</h2>
-              <p className="text-lg text-gray-100">Get weekly updates on new products, exclusive deals, and special offers!</p>
-            </div>
-            <div className="flex gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="px-6 lg:py-4 py-2 rounded-lg w-56 outline-none text-gray-900"
-              />
-              <button
-                onClick={() => showNotification('Thanks for subscribing!')}
-                className="bg-white text-red-600 px-8 lg:py-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition"
-              >
-                Subscribe Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
+
+      <Newsletter />
 
       {/* Brand Logos */}
-      <section className="py-12 bg-white border-y">
-        <div className="container mx-auto px-4">
-          <h3 className="text-center text-gray-500 text-sm font-semibold mb-8">TRUSTED BY LEADING BRANDS</h3>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-5 items-center justify-around opacity-60">
-            {['BRAND', 'LOGO', 'PARTNER', 'COMPANY', 'RETAIL', 'STORE'].map((brand, idx) => (
-              <div key={idx} className="text-2xl font-bold text-gray-400">
-                {brand}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustedPartners />
 
       <Footer></Footer>
 

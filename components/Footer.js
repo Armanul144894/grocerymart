@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitch, Twitter, X, Youtube } from 'lucide-react'
+import Link from 'next/link';
 import React from 'react'
 
 const socials = [
@@ -35,7 +36,7 @@ export default function Footer() {
               <ul className="space-y-3 text-sm">
                 {['About Us', 'Shop', 'Offers', 'Blog', 'Contact Us', 'Track Order'].map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-white transition">{link}</a>
+                    <Link href={`/${link.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-white transition">{link}</Link>
                   </li>
                 ))}
               </ul>
@@ -46,7 +47,7 @@ export default function Footer() {
               <ul className="space-y-3 text-sm">
                 {['Vegetables', 'Fruits', 'Dairy Products', 'Meat & Fish', 'Beverages', 'Snacks'].map((cat) => (
                   <li key={cat}>
-                    <a href="#" className="text-gray-400 hover:text-white transition">{cat}</a>
+                    <Link href="#" className="text-gray-400 hover:text-white transition">{cat}</Link>
                   </li>
                 ))}
               </ul>
@@ -77,9 +78,9 @@ export default function Footer() {
                 © 2025 GroceryMart. All rights reserved. | Designed with ❤️ in Bangladesh
               </p>
               <div className="flex gap-6 text-gray-400">
-                <a href="#" className="hover:text-white transition">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition">Terms of Service</a>
-                <a href="#" className="hover:text-white transition">Cookie Policy</a>
+                <Link href="#" className="hover:text-white transition">Privacy Policy</Link>
+                <Link href="#" className="hover:text-white transition">Terms of Service</Link>
+                <Link href="#" className="hover:text-white transition">Cookie Policy</Link>
               </div>
             </div>
           </div>
