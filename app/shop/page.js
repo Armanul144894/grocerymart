@@ -406,11 +406,13 @@ export default function Page() {
                             -{product.discount}%
                           </div>
                         )}
-                        <img
-                          src={product.image}
+                        <Image
+                        src={product.images[0]}
                           alt={product.name}
+                          height={200}
+                          width={400}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
-                        />
+                          />
                       </div>
                     </Link>
 

@@ -1,5 +1,6 @@
 'use client'
 import { ChevronRight, Heart, Package, ShoppingCart, Star, TrendingUp } from 'lucide-react'
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react'
 
@@ -69,7 +70,7 @@ export default function TrendingProducts({ wishlist, showNotification }) {
                             >
                                 <Link href={`/product//${product.name
                                     .toLowerCase()
-                                    .replace(/\s+/g, "-")}`} key={product.id}>
+                                    .replace(/\s+/g, "-")}`}>
                                     {product.discount && (
                                         <div className="absolute top-2 left-2 z-10">
                                             <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
@@ -86,11 +87,15 @@ export default function TrendingProducts({ wishlist, showNotification }) {
                                     </button>
 
                                     <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                                        <img
+                                        <Image
                                             src={product.image}
                                             alt={product.name}
+                                            height={200}
+                                            width={400}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                        />
+                                        >
+
+                                        </Image>
                                     </div>
 
                                     <div className="flex items-center gap-1 mb-2">

@@ -1,5 +1,6 @@
 'use client'
 import { Clock, Zap, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -133,54 +134,57 @@ export default function WeeklyOffer() {
             {/* Slider Container */}
 
             <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {products.map((product) => (
-                <Link href={`/product//${product.name
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`} key={product.id}
-                  className="flex-shrink-0 px-3"
-                  style={{ width: `${100 / itemsPerView}%` }}>
-                  <div >
-                    <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200 hover:border-red-400 transition hover:shadow-xl h-full">
-                      <div className="bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4 w-fit flex items-center gap-1">
-                        <Zap size={14} />
-                        SPECIAL OFFER
-                      </div>
-                      <div className="aspect-square mb-4 overflow-hidden rounded-lg bg-white">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <h3 className="font-bold text-lg mb-2 text-gray-900">{product.name}</h3>
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <span className="text-2xl font-bold text-red-600">৳{product.price}</span>
-                          <span className="text-sm text-gray-400 line-through ml-2">৳{product.oldPrice}</span>
+              <div
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {products.map((product) => (
+                  <Link href={`/product//${product.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`} key={product.id}
+                    className="flex-shrink-0 px-3"
+                    style={{ width: `${100 / itemsPerView}%` }}>
+                    <div >
+                      <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200 hover:border-red-400 transition hover:shadow-xl h-full">
+                        <div className="bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4 w-fit flex items-center gap-1">
+                          <Zap size={14} />
+                          SPECIAL OFFER
                         </div>
-                        <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-                          -{product.discount}%
+                        <div className="aspect-square mb-4 overflow-hidden rounded-lg bg-white">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            height={200}
+                            width={400}
+                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+
+                          />
                         </div>
+                        <h3 className="font-bold text-lg mb-2 text-gray-900">{product.name}</h3>
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <span className="text-2xl font-bold text-red-600">৳{product.price}</span>
+                            <span className="text-sm text-gray-400 line-through ml-2">৳{product.oldPrice}</span>
+                          </div>
+                          <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                            -{product.discount}%
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => addToCart(product)}
+                          className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
+                        >
+                          Add to Cart
+                        </button>
                       </div>
-                      <button
-                        onClick={() => addToCart(product)}
-                        className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
-                      >
-                        Add to Cart
-                      </button>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
 
             {/* Slider Indicators */}
             <div className="flex justify-center gap-2 mt-6">

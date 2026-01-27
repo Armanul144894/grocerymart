@@ -13,6 +13,7 @@ import Testimonials from './HomeComponents/Testimonials';
 import FreshVegetablesBanner from './HomeComponents/FreshVegetablesBanner';
 import PromotionalBanners from './HomeComponents/PromotionalBanners';
 import TrustedPartners from './HomeComponents/TrustedPartners';
+import Image from 'next/image';
 
 // Mock data with real image URLs
 const categories = [
@@ -187,11 +188,13 @@ export default function GroceryStore() {
                   </button>
 
                   <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                    <img
-                      src={product.image}
+                    <Image  src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                      height={200}
+                      width={400}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+
+                    </Image>
                   </div>
 
                   <div className="flex items-center gap-1 mb-2">
@@ -292,11 +295,14 @@ export default function GroceryStore() {
                   </button>
 
                   <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                    <img
-                      src={product.image}
+                    <Image
+                     src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                      height={200}
+                      width={400}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+
+                    </Image>
                   </div>
 
                   <div className="flex items-center gap-1 mb-2">

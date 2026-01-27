@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 
 const featuredDeals = [
@@ -14,7 +15,16 @@ export default function FeaturedBanner() {
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
                         {featuredDeals.map((deal, idx) => (
                             <div key={idx} className="relative rounded-2xl overflow-hidden h-64 cursor-pointer group">
-                                <img src={deal.image} alt={deal.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+
+                                <Image
+                                    src={deal.image}
+                                    alt={deal.title}
+                                    height={200}
+                                    width={400}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                >
+
+                                </Image>
                                 <div className={`absolute inset-0 ${deal.color} opacity-70 group-hover:opacity-80 transition`}></div>
                                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                                     <h3 className="text-3xl font-bold mb-2">{deal.title}</h3>

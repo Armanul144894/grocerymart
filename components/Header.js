@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Heart, Mail, MapPin, Menu, Minus, Phone, Plus, Search, ShoppingCart, Trash2, User, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Mock data
 const categories = [
@@ -71,7 +72,7 @@ export default function Header() {
                   <div className="space-y-4 mb-6">
                     {cart.map(item => (
                       <div key={item.id} className="flex gap-3 sm:gap-4 p-3 bg-gray-50 rounded-lg">
-                        <img src={item.image} alt={item.name} className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded" />
+                        <Image src={item.image} alt={item.name} height={200} width={400} className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded" />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-sm mb-1 truncate">{item.name}</h3>
                           <p className="text-red-600 font-bold mb-2">৳{item.price}</p>
@@ -168,7 +169,7 @@ export default function Header() {
                       key={idx}
                       className="w-full px-4 py-2 hover:bg-gray-100 rounded-lg text-left text-gray-700 flex items-center gap-3"
                     >
-                      <img src={cat.icon} alt={cat.name} className="w-8 h-8 rounded object-cover" />
+                      <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
                       <span className="text-sm">{cat.name}</span>
                     </button>
                   ))}
@@ -313,7 +314,7 @@ export default function Header() {
                           onClick={() => setShowCategories(false)}
                           className="w-full px-4 py-2 hover:bg-gray-100 text-left text-gray-700 flex items-center gap-3"
                         >
-                          <img src={cat.icon} alt={cat.name} className="w-8 h-8 rounded object-cover" />
+                          <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
                           {cat.name}
                         </button>
                       ))}

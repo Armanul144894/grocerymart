@@ -4,6 +4,7 @@ import { ShoppingCart, Search, User, Heart, Menu, ChevronDown, Phone, Mail, MapP
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import Image from 'next/image';
 
 // Team members data
 const teamMembers = [
@@ -68,7 +69,7 @@ export default function Page() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
-            <Header/>
+            <Header />
 
             {/* Breadcrumb */}
             <div className="bg-white border-b">
@@ -83,11 +84,11 @@ export default function Page() {
 
             {/* Hero Section */}
             <section className="relative h-96 overflow-hidden">
-                <img
-                    src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&h=600&fit=crop"
+                <Image src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&h=600&fit=crop"
                     alt="About Us"
-                    className="w-full h-full object-cover"
-                />
+                    height={200}
+                    width={1600}
+                    className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
 
                 <div className="absolute inset-0 container mx-auto px-4 flex items-center">
@@ -136,25 +137,31 @@ export default function Page() {
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <img
-                                src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=400&h=300&fit=crop"
+                            <Image src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=400&h=300&fit=crop"
                                 alt="Fresh Produce"
                                 className="rounded-2xl shadow-lg"
+                                height={200}
+                                width={1600}
                             />
-                            <img
-                                src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=400&h=300&fit=crop"
+                            <Image src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=400&h=300&fit=crop"
                                 alt="Quality Products"
                                 className="rounded-2xl shadow-lg mt-8"
+                                height={200}
+                                width={1600}
                             />
-                            <img
-                                src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop"
+
+                            <Image src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop"
                                 alt="Happy Customers"
                                 className="rounded-2xl shadow-lg"
+                                height={200}
+                                width={1600}
                             />
-                            <img
-                                src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop"
+
+                            <Image src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop"
                                 alt="Fresh Vegetables"
                                 className="rounded-2xl shadow-lg mt-8"
+                                height={200}
+                                width={1600}
                             />
                         </div>
                     </div>
@@ -275,11 +282,11 @@ export default function Page() {
                         {teamMembers.map((member) => (
                             <div key={member.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group">
                                 <div className="aspect-square overflow-hidden bg-gray-100">
-                                    <img
-                                        src={member.image}
+                                    <Image src={member.image}
                                         alt={member.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
+                                        height={80}
+                                        width={80}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 </div>
                                 <div className="p-6 text-center">
                                     <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>

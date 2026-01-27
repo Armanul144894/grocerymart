@@ -1,10 +1,14 @@
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
 const bannerSlides = [
-  'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1200&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=1200&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=600&fit=crop', // Sale banner
+  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1200&h=600&fit=crop', // Shopping bags
+  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop', // Store display
+  'https://images.unsplash.com/photo-1573855619003-97b4799dcd8b?w=1200&h=600&fit=crop', // Modern retail
 ];
+
 
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,11 +30,15 @@ export default function Banner() {
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <img
-              src={image}
+            <Image
+            src={image}
               alt={`Banner ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
+              className="w-full h-full"
+              height={400}
+              width={1600}
+              >
+
+            </Image>
           </div>
         ))}
 

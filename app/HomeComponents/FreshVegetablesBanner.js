@@ -1,15 +1,19 @@
 import { ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 import React from 'react'
 
 export default function FreshVegetablesBanner() {
     return (
         <div>
             <section className="py-16 relative overflow-hidden">
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1600&h=400&fit=crop"
+                    height={400}
+                    width={800}
                     alt="Fresh Vegetables"
                     className="absolute inset-0 w-full h-full object-cover"
-                />
+                >
+                </Image>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-600/80"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-2xl text-white">

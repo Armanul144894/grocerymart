@@ -10,7 +10,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'medeasy.health',
+        hostname: 'tailwindcss.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
       },
     ],
   },

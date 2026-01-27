@@ -1,5 +1,6 @@
 'use client'
 import { Clock, Zap, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const testimonials = [
@@ -106,11 +107,14 @@ export default function Testimonials() {
                                     <div key={idx} className='flex-shrink-0 px-3'>
                                         <div className="bg-white rounded-xl p-4 hover:shadow-xl transition group h-full">
                                             <div className="flex items-center gap-4 mb-4">
-                                                <img
+                                                <Image
                                                     src={testimonial.image}
                                                     alt={testimonial.name}
+                                                    height={40}
+                                                    width={60}
                                                     className="w-16 h-16 rounded-full object-cover"
-                                                />
+                                                >
+                                                </Image>
                                                 <div>
                                                     <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                                                     <div className="flex gap-1 mt-1">

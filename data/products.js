@@ -225,7 +225,7 @@ const products = [
     category: 'Vegetables',
     sku: 'VEG-CAU-007',
     images: [
-      'https://images.unsplash.com/photo-1568584711271-f9b5f6c2e3eb?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1510627489930-0c1b0bfb6785?w=600&h=600&fit=crop',
     ],
     description: 'White, fresh cauliflower heads perfect for curries, stir-fries, and healthy meals.',
@@ -330,7 +330,7 @@ const products = [
     category: 'Vegetables',
     sku: 'VEG-BEA-010',
     images: [
-      'https://images.unsplash.com/photo-1599818189458-e617f1f7a5e5?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&h=600&fit=crop',
     ],
     description: 'Crisp and tender green beans, perfect for stir-fries and healthy side dishes.',
@@ -365,7 +365,7 @@ const products = [
     category: 'Vegetables',
     sku: 'VEG-EGG-011',
     images: [
-      'https://images.unsplash.com/photo-1617360547784-632c0c6a58e1?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1628773822503-930a7eaecf80?w=600&h=600&fit=crop',
     ],
     description: 'Fresh purple eggplants ideal for grilling, frying, and curries. Rich in nutrients and flavor.',
@@ -435,8 +435,8 @@ const products = [
     category: 'Vegetables',
     sku: 'VEG-BIT-013',
     images: [
-      'https://images.unsplash.com/photo-1627367234196-2a12ecbda4bb?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1627367234196-2a12ecbda4bb?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1628773822503-930a7eaecf80?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1628773822503-930a7eaecf80?w=600&h=600&fit=crop',
     ],
     description: 'Fresh bitter gourd known for its health benefits and unique taste. Great for diabetic diets.',
     features: [
@@ -505,7 +505,7 @@ const products = [
     category: 'Vegetables',
     sku: 'VEG-RAD-015',
     images: [
-      'https://images.unsplash.com/photo-1606588260439-26b52e5c8bb5?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=600&h=600&fit=crop',
     ],
     description: 'Crispy and peppery radishes, perfect for salads and garnishing.',
@@ -717,7 +717,7 @@ const products = [
     category: 'Fruits',
     sku: 'FRT-GRA-021',
     images: [
-      'https://images.unsplash.com/photo-1599819177261-fe8f20c5bc5b?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1596363505729-4190a9506133?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1596363505729-4190a9506133?w=600&h=600&fit=crop',
     ],
     description: 'Sweet and seedless grapes, perfect for snacking and fruit salads.',
@@ -752,7 +752,7 @@ const products = [
     category: 'Fruits',
     sku: 'FRT-WAT-022',
     images: [
-      'https://images.unsplash.com/photo-1587049352846-4a222e784354?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1582281298055-e25b95194c46?w=600&h=600&fit=crop',
     ],
     description: 'Sweet and refreshing watermelon, perfect for hot summer days. Hydrating and delicious.',
@@ -822,7 +822,7 @@ const products = [
     category: 'Fruits',
     sku: 'FRT-POM-024',
     images: [
-      'https://images.unsplash.com/photo-1615485500634-92d78b4c23d3?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1585059895524-72359e06133a?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1570017059863-52e647849ed1?w=600&h=600&fit=crop',
     ],
     description: 'Jewel-like pomegranate seeds packed with antioxidants and nutrients.',
@@ -858,7 +858,7 @@ const products = [
     sku: 'FRT-PAP-025',
     images: [
       'https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1598288300007-c4fc14b95414?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
     ],
     description: 'Sweet and soft papaya rich in digestive enzymes and vitamins.',
     features: [
@@ -997,7 +997,7 @@ const products = [
     category: 'Fruits',
     sku: 'FRT-PEA-029',
     images: [
-      'https://images.unsplash.com/photo-1568660358384-e8cb1a843a68?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=600&h=600&fit=crop',
     ],
     description: 'Juicy and sweet pears with soft, buttery texture.',
@@ -1032,7 +1032,7 @@ const products = [
     category: 'Fruits',
     sku: 'FRT-PCH-030',
     images: [
-      'https://images.unsplash.com/photo-1629828874514-944db3f944c8?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1582281298055-e25b95194c46?w=600&h=600&fit=crop',
     ],
     description: 'Soft and fragrant peaches with sweet, juicy flesh.',
@@ -2137,7 +2137,7 @@ const products = [
     sku: 'MET-CHK-064',
     images: [
       'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1603048588665-791ca8ead68a?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Fresh, skinless chicken breast rich in lean protein.',
     features: ['High protein', 'Fresh cut', 'Halal', 'No hormones', 'Vacuum packed'],
@@ -2159,8 +2159,8 @@ const products = [
     category: 'Meat',
     sku: 'MET-BEF-065',
     images: [
-      'https://images.unsplash.com/photo-1588347818036-091311c8c799?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1603048588665-791ca8ead68a?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Premium beef steak with rich flavor and tenderness.',
     features: ['Premium cut', 'Juicy texture', 'High protein', 'Fresh chilled', 'Halal'],
@@ -2183,7 +2183,7 @@ const products = [
     sku: 'MET-MUT-066',
     images: [
       'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1603048588665-791ca8ead68a?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Fresh and tender mutton ideal for curries and traditional dishes.',
     features: ['Fresh cut', 'Rich flavor', 'High protein', 'Halal', 'Vacuum packed'],
@@ -2206,7 +2206,7 @@ const products = [
     sku: 'MET-SAL-067',
     images: [
       'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1534943441045-1ad3e5f4d364?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
     ],
     description: 'Premium fresh salmon rich in omega-3 fatty acids.',
     features: ['Omega-3 rich', 'Fresh chilled', 'Boneless cut', 'Premium quality', 'Healthy choice'],
@@ -2229,7 +2229,7 @@ const products = [
     sku: 'MET-PRW-068',
     images: [
       'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1534943441045-1ad3e5f4d364?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
     ],
     description: 'Fresh prawns perfect for frying, grilling, and curries.',
     features: ['Fresh catch', 'Juicy texture', 'High protein', 'Cleaned', 'Quick cooking'],
@@ -2274,7 +2274,7 @@ const products = [
     category: 'Meat',
     sku: 'MET-FIL-070',
     images: [
-      'https://images.unsplash.com/photo-1534943441045-1ad3e5f4d364?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=600&fit=crop',
     ],
     description: 'Boneless fish fillet ideal for pan-fry and grilling.',
@@ -2297,8 +2297,8 @@ const products = [
     category: 'Meat',
     sku: 'MET-GRB-071',
     images: [
-      'https://images.unsplash.com/photo-1603048588665-791ca8ead68a?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1588347818036-091311c8c799?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Fresh ground beef perfect for kebabs, burgers, and curries.',
     features: ['Fine minced', 'Fresh cut', 'High protein', 'Halal', 'Vacuum sealed'],
@@ -2323,7 +2323,7 @@ const products = [
     sku: 'BEV-GRT-072',
     images: [
       'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1597318130897-c1cca3c6c5cc?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Refreshing green tea rich in antioxidants.',
     features: ['Antioxidant rich', 'Refreshing', 'Natural flavor', 'Healthy choice', 'Easy brew'],
@@ -2369,7 +2369,7 @@ const products = [
     sku: 'BEV-COF-074',
     images: [
       'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1597318130897-c1cca3c6c5cc?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Rich aroma coffee powder for a strong and flavorful brew.',
     features: ['Strong aroma', 'Premium beans', 'Rich taste', 'Instant brew', 'Trusted brand'],
@@ -2415,7 +2415,7 @@ const products = [
     sku: 'BEV-MNG-076',
     images: [
       'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1597318130897-c1cca3c6c5cc?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
     ],
     description: 'Sweet mango juice made from ripe mango pulp.',
     features: ['Real mango pulp', 'Sweet flavor', 'No preservatives', 'Kids favorite', 'Ready to drink'],
@@ -2437,7 +2437,7 @@ const products = [
     category: 'Beverages',
     sku: 'BEV-ENG-077',
     images: [
-      'https://images.unsplash.com/photo-1622543925917-763c34f6a0e4?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=600&h=600&fit=crop',
     ],
     description: 'Energy drink that boosts stamina and alertness.',
@@ -2460,7 +2460,7 @@ const products = [
     category: 'Beverages',
     sku: 'BEV-LMT-078',
     images: [
-      'https://images.unsplash.com/photo-1597318130897-c1cca3c6c5cc?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=600&fit=crop',
     ],
     description: 'Zesty lemon-flavored tea for a refreshing break.',
@@ -2483,7 +2483,7 @@ const products = [
     category: 'Beverages',
     sku: 'BEV-COC-079',
     images: [
-      'https://images.unsplash.com/photo-1597318130897-c1cca3c6c5cc?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=600&h=600&fit=crop',
       'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=600&h=600&fit=crop',
     ],
     description: 'Natural coconut water packed with electrolytes.',
@@ -2791,7 +2791,7 @@ const products = [
   sku: 'CSP-TUR-092',
   images: [
     'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1604908554164-8c4f97e98b1c?w=600&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
   ],
   description: 'Pure turmeric powder made from selected turmeric roots for rich color and aroma.',
   features: ['100% pure', 'Natural color', 'Strong aroma', 'No additives', 'Daily cooking essential'],
@@ -2836,7 +2836,7 @@ const products = [
   category: 'Cooking & Spices',
   sku: 'CSP-CUM-094',
   images: [
-    'https://images.unsplash.com/photo-1604908554164-8c4f97e98b1c?w=600&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
     'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
   ],
   description: 'Aromatic cumin powder for authentic taste in curries and lentils.',
@@ -2860,7 +2860,7 @@ const products = [
   sku: 'CSP-COR-095',
   images: [
     'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1604908554164-8c4f97e98b1c?w=600&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
   ],
   description: 'Fresh coriander powder with mild citrus aroma for everyday cooking.',
   features: ['Mild flavor', 'Fresh aroma', 'Fine texture', 'Natural ingredients', 'Essential spice'],
@@ -2905,7 +2905,7 @@ const products = [
   category: 'Cooking & Spices',
   sku: 'CSP-BPP-097',
   images: [
-    'https://images.unsplash.com/photo-1604908554164-8c4f97e98b1c?w=600&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
     'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=600&h=600&fit=crop',
   ],
   description: 'Strong and aromatic black pepper powder for seasoning and marinades.',
