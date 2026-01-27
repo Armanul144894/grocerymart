@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import RelatedProductsSlider from '../ProductComponents/RelatedProductsSlider';
+import Image from 'next/image';
 
 // Mock product data
 const productData = {
@@ -124,11 +125,13 @@ export default function ProductDetails() {
             {/* Image Gallery */}
             <div>
               <div className="mb-4 rounded-xl overflow-hidden bg-gray-100 border-2 border-gray-200">
-                <img
-                  src={productData.images[selectedImage]}
+                <Image src={productData.images[selectedImage]}
                   alt={productData.name}
-                  className="w-full h-[500px] object-cover"
-                />
+                  height={400}
+                  width={500}
+                  className="w-full h-[500px] object-cover">
+
+                </Image>
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {productData.images.map((image, index) => (
@@ -138,11 +141,14 @@ export default function ProductDetails() {
                     className={`rounded-lg overflow-hidden border-2 ${selectedImage === index ? 'border-red-600' : 'border-gray-200'
                       } hover:border-red-600 transition`}
                   >
-                    <img
-                      src={image}
+                  
+                    <Image src={image}
                       alt={`Product ${index + 1}`}
-                      className="w-full h-24 object-cover"
-                    />
+                      height={100}
+                      width={200}
+                      className="w-full h-24 object-cover">
+
+                    </Image>
                   </button>
                 ))}
               </div>

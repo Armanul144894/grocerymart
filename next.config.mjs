@@ -6,10 +6,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://images.unsplash.com',
-        port: '',
-        pathname: '/my-bucket/**',
-        search: '',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'medeasy.health',
       },
     ],
   },
