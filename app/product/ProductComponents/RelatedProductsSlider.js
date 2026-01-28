@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function RelatedProductsSlider() {
+export default function RelatedProductsSlider({ relatedProducts }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const relatedProducts = [
-    { id: 2, name: 'Fresh Cucumbers', price: 25, oldPrice: 35, image: 'https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=300&h=300&fit=crop', rating: 4.4, discount: 29 },
-    { id: 3, name: 'Fresh Carrots', price: 40, oldPrice: 50, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300&h=300&fit=crop', rating: 4.6, discount: 20 },
-    { id: 4, name: 'Fresh Cucumbers', price: 25, oldPrice: 35, image: 'https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=300&h=300&fit=crop', rating: 4.4, discount: 29 },
-    { id: 5, name: 'Fresh Onions', price: 35, oldPrice: 45, image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&h=300&fit=crop', rating: 4.5, discount: 22 },
-    { id: 6, name: 'Fresh Potatoes', price: 30, oldPrice: 40, image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&h=300&fit=crop', rating: 4.4, discount: 25 },
-    { id: 7, name: 'Fresh Onions', price: 35, oldPrice: 45, image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&h=300&fit=crop', rating: 4.5, discount: 22 },
-  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,9 +88,12 @@ export default function RelatedProductsSlider() {
               onTouchEnd={handleTouchEnd}
             >
               {relatedProducts.map((product) => (
-                <Link href={`/product//${product.name
+                <Link href={`/product/${product.name
                   .toLowerCase()
-                  .replace(/\s+/g, "-")}`} key={product.id}
+                  .replace(/&/g, 'and')
+                  .replace(/[^a-z0-9]+/g, '-')
+                  .replace(/(^-|-$)/g, '')}`} 
+                  key={product.id}
                   className="flex-shrink-0 px-3"
                   style={{ width: `${100 / itemsPerView}%` }}>
                   <div
@@ -111,11 +107,11 @@ export default function RelatedProductsSlider() {
                         </div>
                       )}
                       <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100">
-                        <img
-                          src={product.image}
+                        <Image src={product.images[0]}
                           alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
+                          height={200}
+                          width={400}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div className="flex items-center gap-1 mb-2">
                         {[...Array(5)].map((_, i) => (

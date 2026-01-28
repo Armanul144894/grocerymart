@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Heart, Mail, MapPin, Menu, Minus, Phone, Plus, Search, ShoppingCart, Trash2, User, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import products from '@/data/products';
 
 // Mock data
 const categories = [
@@ -44,6 +45,8 @@ export default function Header() {
   const removeFromCart = (productId) => {
     setCart(cart.filter(item => item.id !== productId));
   };
+
+  const allproducts = products;
 
   return (
     <>
@@ -165,13 +168,18 @@ export default function Header() {
                 <h3 className="font-semibold mb-3">Categories</h3>
                 <div className="space-y-2">
                   {categories.map((cat, idx) => (
-                    <button
-                      key={idx}
-                      className="w-full px-4 py-2 hover:bg-gray-100 rounded-lg text-left text-gray-700 flex items-center gap-3"
-                    >
-                      <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
-                      <span className="text-sm">{cat.name}</span>
-                    </button>
+                    <Link key={idx} href={`/category/${cat.name.toLowerCase()
+                      .replace(/&/g, 'and')
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/(^-|-$)/g, '')}`}>
+                      <button
+
+                        className="w-full px-4 py-2 hover:bg-gray-100 rounded-lg text-left text-gray-700 flex items-center gap-3"
+                      >
+                        <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
+                        <span className="text-sm">{cat.name}</span>
+                      </button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -309,14 +317,18 @@ export default function Header() {
                   {showCategories && (
                     <div className="absolute top-full left-0 mt-2 bg-white shadow-xl rounded-lg py-2 w-64 z-50">
                       {categories.map((cat, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setShowCategories(false)}
-                          className="w-full px-4 py-2 hover:bg-gray-100 text-left text-gray-700 flex items-center gap-3"
-                        >
-                          <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
-                          {cat.name}
-                        </button>
+                        <Link key={idx} href={`/category/${cat.name.toLowerCase()
+                          .replace(/&/g, 'and')
+                          .replace(/[^a-z0-9]+/g, '-')
+                          .replace(/(^-|-$)/g, '')}`}>
+                          <button
+                            onClick={() => setShowCategories(false)}
+                            className="w-full px-4 py-2 hover:bg-gray-100 text-left text-gray-700 flex items-center gap-3"
+                          >
+                            <Image src={cat.icon} alt={cat.name} height={40} width={40} className="w-8 h-8 rounded object-cover" />
+                            {cat.name}
+                          </button>
+                        </Link>
                       ))}
                     </div>
                   )}

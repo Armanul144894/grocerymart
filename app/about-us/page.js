@@ -68,8 +68,6 @@ export default function Page() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Header */}
-            <Header />
 
             {/* Breadcrumb */}
             <div className="bg-white border-b">
@@ -344,8 +342,6 @@ export default function Page() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <Footer />
         </div>
     );
 }

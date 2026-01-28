@@ -104,7 +104,6 @@ export default function Page() {
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
@@ -299,7 +298,9 @@ export default function Page() {
                     <Link
                       href={`/product/${product.name
                         .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
+                        .replace(/&/g, 'and')
+                        .replace(/[^a-z0-9]+/g, '-')
+                        .replace(/(^-|-$)/g, '')}`}
                       passHref
                     >
                       {product.discount && (
@@ -327,13 +328,13 @@ export default function Page() {
                       </button>
 
                       <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 cursor-pointer">
-                       
+
                         <Image src={product.images[0]}
                           alt={product.name}
                           height={200}
                           width={400}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                          </Image>
+                        </Image>
                       </div>
 
                       <div className="flex items-center gap-1 mb-2">
@@ -397,7 +398,9 @@ export default function Page() {
                       key={product.id}
                       href={`/product/${product.name
                         .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
+                        .replace(/&/g, 'and')
+                        .replace(/[^a-z0-9]+/g, '-')
+                        .replace(/(^-|-$)/g, '')}`}
                       passHref
                     >
                       <div className=" w-full h-full md:w-48 md:h-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 relative">
@@ -407,12 +410,12 @@ export default function Page() {
                           </div>
                         )}
                         <Image
-                        src={product.images[0]}
+                          src={product.images[0]}
                           alt={product.name}
                           height={200}
                           width={400}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
-                          />
+                        />
                       </div>
                     </Link>
 
@@ -505,7 +508,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

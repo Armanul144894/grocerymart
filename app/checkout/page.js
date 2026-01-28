@@ -109,8 +109,6 @@ export default function CheckoutPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-
-            <Header />
             {/* Breadcrumb */}
             <div className="bg-white border-b">
                 <div className="container mx-auto px-4 py-4">
@@ -607,8 +605,6 @@ export default function CheckoutPage() {
                 </div>
             </div>
 
-            {/* Footer */}
-            <Footer/>
         </div>
     );
 }

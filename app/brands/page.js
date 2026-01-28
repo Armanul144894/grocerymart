@@ -306,8 +306,6 @@ export default function BrandsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top Header */}
-      <Header />
 
       {/* Breadcrumb */}
       <div className="bg-white border-b">
@@ -500,9 +498,6 @@ export default function BrandsPage() {
             ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
