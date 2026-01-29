@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 // Mock brand data
 const brandData = {
@@ -294,8 +295,6 @@ export default function BrandShopPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
@@ -317,21 +316,23 @@ export default function BrandShopPage() {
 
       {/* Brand Banner */}
       <section className="relative h-[80vh] md:h-80 overflow-hidden">
-        <img
-          src={brandData.banner}
+
+        <Image src={brandData.banner}
           alt={brandData.name}
-          className="w-full h-full object-cover"
-        />
+          height={200}
+                width={400}
+          className="w-full h-full object-cover"/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
 
         <div className="absolute inset-0 container mx-auto px-4 flex items-center">
           <div className="flex flex-wrap md:flex-nowrap items-center gap-8">
             <div className="w-32 h-32 bg-white rounded-2xl overflow-hidden shadow-2xl flex-shrink-0">
-              <img
-                src={brandData.logo}
+           
+              <Image src={brandData.logo}
                 alt={brandData.name}
-                className="w-full h-full object-cover"
-              />
+                height={200}
+                width={400}
+                className="w-full h-full object-cover"/>
             </div>
 
             <div className="text-white">
@@ -712,8 +713,6 @@ export default function BrandShopPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

@@ -18,8 +18,6 @@ import {
   Package,
 } from "lucide-react";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 // Mock brands data with real images
 const featuredBrands = [
   {

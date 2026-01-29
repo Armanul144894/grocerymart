@@ -683,7 +683,7 @@ const products = [
     sku: 'FRT-MAN-020',
     images: [
       'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1605664515998-c034207cc51c?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&h=600&fit=crop',
     ],
     description: 'Sweet and succulent mangoes, the king of fruits. Rich in vitamins and tropical flavor.',
     features: [
@@ -753,7 +753,7 @@ const products = [
     sku: 'FRT-WAT-022',
     images: [
       'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1582281298055-e25b95194c46?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=600&h=600&fit=crop',
     ],
     description: 'Sweet and refreshing watermelon, perfect for hot summer days. Hydrating and delicious.',
     features: [
@@ -823,7 +823,7 @@ const products = [
     sku: 'FRT-POM-024',
     images: [
       'https://images.unsplash.com/photo-1585059895524-72359e06133a?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1570017059863-52e647849ed1?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1585059895524-72359e06133a?w=600&h=600&fit=crop',
     ],
     description: 'Jewel-like pomegranate seeds packed with antioxidants and nutrients.',
     features: [
@@ -928,7 +928,7 @@ const products = [
     sku: 'FRT-GUA-027',
     images: [
       'https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1611176259050-8f7bafb3b23d?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?w=600&h=600&fit=crop',
     ],
     description: 'Aromatic and sweet guava fruits rich in Vitamin C and fiber.',
     features: [
@@ -1033,7 +1033,7 @@ const products = [
     sku: 'FRT-PCH-030',
     images: [
       'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1582281298055-e25b95194c46?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=600&fit=crop',
     ],
     description: 'Soft and fragrant peaches with sweet, juicy flesh.',
     features: [
