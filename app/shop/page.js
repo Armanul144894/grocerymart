@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   ShoppingCart,
   Heart,
@@ -17,34 +17,6 @@ import products from "@/data/products";
 import Image from "next/image";
 
 // Mock products data
-const allProducts = products;
-
-const categories = [
-  "All Products",
-  "Vegetables",
-  "Fruits",
-  "Dairy",
-  "Bakery",
-  "Meat",
-  "Beverages",
-  "Snacks",
-  "Grains",
-  "Cooking",
-  "Organic",
-];
-const brands = [
-  "All Brands",
-  "FreshFarm",
-  "DairyFresh",
-  "FruitCo",
-  "Premium",
-  "BakeHouse",
-  "MeatMart",
-  "TeaTime",
-  "Snacky",
-  "JuicePlus",
-  "PureHoney",
-];
 
 export default function Page() {
   const [selectedCategory, setSelectedCategory] = useState("All Products");
@@ -57,6 +29,15 @@ export default function Page() {
   const [wishlist, setWishlist] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showCart, setShowCart] = useState(false);
+
+  const allProducts = products;
+
+  /* ✅ FIXED: category list (NO layout change) */
+  const categories = useMemo(() => {
+    return ["All Products", ...new Set(allProducts.map((p) => p.category))];
+  }, [allProducts]);
+
+  const brands = ["All Brands", ...new Set(products.map((p) => p.brand))];
 
   // Filter products
   let filteredProducts = allProducts.filter((product) => {
@@ -99,7 +80,7 @@ export default function Page() {
 
   const cartTotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
@@ -260,19 +241,21 @@ export default function Page() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => setViewMode("grid")}
-                      className={`p-2 rounded ${viewMode === "grid"
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-200 text-gray-600"
-                        }`}
+                      className={`p-2 rounded ${
+                        viewMode === "grid"
+                          ? "bg-red-600 text-white"
+                          : "bg-gray-200 text-gray-600"
+                      }`}
                     >
                       <Grid size={18} />
                     </button>
                     <button
                       onClick={() => setViewMode("list")}
-                      className={`p-2 rounded ${viewMode === "list"
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-200 text-gray-600"
-                        }`}
+                      className={`p-2 rounded ${
+                        viewMode === "list"
+                          ? "bg-red-600 text-white"
+                          : "bg-gray-200 text-gray-600"
+                      }`}
                     >
                       <List size={18} />
                     </button>
@@ -298,9 +281,9 @@ export default function Page() {
                     <Link
                       href={`/product/${product.name
                         .toLowerCase()
-                        .replace(/&/g, 'and')
-                        .replace(/[^a-z0-9]+/g, '-')
-                        .replace(/(^-|-$)/g, '')}`}
+                        .replace(/&/g, "and")
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/(^-|-$)/g, "")}`}
                       passHref
                     >
                       {product.discount && (
@@ -312,10 +295,11 @@ export default function Page() {
                       )}
                       <button
                         onClick={() => toggleWishlist(product.id)}
-                        className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${wishlist.includes(product.id)
-                          ? "bg-red-600 text-white"
-                          : "bg-white text-gray-400"
-                          } hover:bg-red-600 hover:text-white transition shadow-md`}
+                        className={`absolute top-2 right-2 z-10 p-1.5 rounded-full ${
+                          wishlist.includes(product.id)
+                            ? "bg-red-600 text-white"
+                            : "bg-white text-gray-400"
+                        } hover:bg-red-600 hover:text-white transition shadow-md`}
                       >
                         <Heart
                           size={16}
@@ -328,13 +312,13 @@ export default function Page() {
                       </button>
 
                       <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 cursor-pointer">
-
-                        <Image src={product.images[0]}
+                        <Image
+                          src={product.images[0]}
                           alt={product.name}
                           height={200}
                           width={400}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        </Image>
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        ></Image>
                       </div>
 
                       <div className="flex items-center gap-1 mb-2">
@@ -376,8 +360,6 @@ export default function Page() {
                           In Stock: {product.stock}
                         </div>
                       </div>
-
-
                     </Link>
                     <button
                       onClick={() => addToCart(product)}
@@ -392,15 +374,17 @@ export default function Page() {
             ) : (
               <div className="space-y-4">
                 {filteredProducts.map((product) => (
-
-                  <div key={product.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap gap-6 mb-5">
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 flex flex-wrap lg:flex-nowrap gap-6 mb-5"
+                  >
                     <Link
                       key={product.id}
                       href={`/product/${product.name
                         .toLowerCase()
-                        .replace(/&/g, 'and')
-                        .replace(/[^a-z0-9]+/g, '-')
-                        .replace(/(^-|-$)/g, '')}`}
+                        .replace(/&/g, "and")
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/(^-|-$)/g, "")}`}
                       passHref
                     >
                       <div className=" w-full h-full md:w-48 md:h-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 relative">
@@ -477,10 +461,11 @@ export default function Page() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => toggleWishlist(product.id)}
-                            className={`p-3 rounded-lg ${wishlist.includes(product.id)
-                              ? "bg-red-600 text-white"
-                              : "bg-gray-200 text-gray-600"
-                              } hover:bg-red-600 hover:text-white transition`}
+                            className={`p-3 rounded-lg ${
+                              wishlist.includes(product.id)
+                                ? "bg-red-600 text-white"
+                                : "bg-gray-200 text-gray-600"
+                            } hover:bg-red-600 hover:text-white transition`}
                           >
                             <Heart
                               size={20}

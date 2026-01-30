@@ -27,6 +27,7 @@ export default function Header() {
     { id: 1, name: 'Fresh Tomatoes', price: 45, quantity: 2, image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&h=300&fit=crop' },
     { id: 2, name: 'Basmati Rice 5kg', price: 450, quantity: 1, image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop' },
   ]);
+  
   const [wishlist, setWishlist] = useState([]);
 
   const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);

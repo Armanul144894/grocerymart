@@ -71,7 +71,6 @@ export default function ProductDetails() {
     }, [slug]);
 
 
-
     const handleQuantityChange = (change) => {
         const newQuantity = quantity + change;
         if (newQuantity >= 1 && newQuantity <= productData?.stock) {
